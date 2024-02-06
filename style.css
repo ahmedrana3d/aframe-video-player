@@ -1,0 +1,49 @@
+#position-data{
+    display: flex;
+width: 200px;
+height: auto;
+padding: 10px 15px;
+justify-content: space-around;
+align-items: center;
+
+flex-direction: row;
+background: #262626;
+text-align: center;
+
+
+margin: 0;
+accent-color: hotpink;
+}
+#range-interface{
+    
+display: flex;
+width: 200px;
+height: 60px;
+justify-content: flex-end;
+align-items: center;
+
+flex-direction: column;
+background: #262626;
+text-align: center;
+
+border-radius: 1em;
+
+margin: 0;
+accent-color: hotpink;
+}
+
+#my-interface{
+    display: flex;
+    width: 500px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #2a2a2e;
+    text-align: center;
+    color: #d6d6d6;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 0;
+    accent-color: hotpink;
+}

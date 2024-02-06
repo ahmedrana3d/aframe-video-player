@@ -1,12 +1,12 @@
 <head>
   <title>Panaroma Video Player | Demo</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" href="./style.css" />
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  <!-- <script src="https://unpkg.com/aframe-immersive-video-component/dist/aframe-immersive-video-component.min.js"></script> -->
   <script src="./scripts/aframe-html.min.js"></script>
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-<script src="./scripts/hover-effect.component.js"></script>
-<script src="./scripts/play-pause.component.js"></script>
+  <script src="./scripts/hover-effect.component.js"></script>
+  <script src="./scripts/play-pause.component.js"></script>
 </head>
 
 <body>
@@ -16,9 +16,7 @@
   >
     <a-assets>
       <video
-        
         loop
-        
         id="panaroma-video"
         src="./assets/videopanaroma.mp4"
         playsinline
@@ -48,74 +46,95 @@
       position="0 1.5 -5.913"
     ></a-entity>
 
-
+    <!-- User Position Data  -->
+    <a-entity
+      class="clickable"
+      scale="10 10 10"
+      html="html: #position-data; cursor: #cursor"
+      position="-6.03227 1.5 -0.95519"
+      look-at="[camera]"
+    ></a-entity>
 
     <!-- Video Controls  -->
 
-    <a-entity scale="0.3 0.3 0.3" look-at="[camera]" position="-0.99 -1.6846 -2.19015" rotation="-31.363 13.816 0" geometry="depth: 0; height: 1.17; width: 6.81" material="color: #383838" scale="0.4 0.4 0.4">
-      <a-image hover-effect="" class="clickable" src="#play" play-pause="#panaroma-video" position="0.13944 -0.003 0.01012" material="" geometry="" opacity="1"></a-image>
-      <a-image hover-effect="" class="clickable" forward="#panaroma-video" src="#forward" position="2.52779 -0.01045 0.03527" material="" geometry="" opacity="1"></a-image>
-      <a-image hover-effect="" class="clickable" backward="#panaroma-video" src="#backward" position="-2.41451 0.02823 0.15399" material="" geometry="" opacity="1"></a-image>
+    <a-entity
+      scale="0.3 0.3 0.3"
+      look-at="[camera]"
+      position="-0.99 -1.6846 -2.19015"
+      rotation="-31.363 13.816 0"
+      geometry="depth: 0; height: 1.17; width: 6.81"
+      material="color: #383838"
+      scale="0.4 0.4 0.4"
+    >
+      <a-image
+        hover-effect=""
+        class="clickable"
+        src="#play"
+        play-pause="#panaroma-video"
+        position="0.13944 -0.003 0.01012"
+        material=""
+        geometry=""
+        opacity="1"
+      ></a-image>
+      <a-image
+        hover-effect=""
+        class="clickable"
+        forward="#panaroma-video"
+        src="#forward"
+        position="2.52779 -0.01045 0.03527"
+        material=""
+        geometry=""
+        opacity="1"
+      ></a-image>
+      <a-image
+        hover-effect=""
+        class="clickable"
+        backward="#panaroma-video"
+        src="#backward"
+        position="-2.41451 0.02823 0.15399"
+        material=""
+        geometry=""
+        opacity="1"
+      ></a-image>
 
-
-
-      <a-entity class="clickable" scale="50 50 10" html="html: #range-interface; cursor: #cursor" position="0.02519 -0.79215 -0.05929" rotation="0 0 -1.06"></a-entity>
-
+      <a-entity
+        class="clickable"
+        scale="50 50 10"
+        html="html: #range-interface; cursor: #cursor"
+        position="0.02519 -0.79215 -0.05929"
+        rotation="0 0 -1.06"
+      ></a-entity>
     </a-entity>
 
+    <!-- camera  -->
 
-
-<!-- camera  -->
-
-<a-entity
-id="rig"
-
-
->
-<a-entity
-  id="player"
-  camera="near: 0.099;"
-  position="0 1.6 0"
-  look-controls
-
->
-
-</a-entity>
-<a-entity laser-controls="hand : left;" raycaster="objects: .clickable; far: 25"></a-entity>
-<a-entity laser-controls="hand : right;" raycaster="objects: .clickable; far: 25"></a-entity>
-</a-entity>
-
-
-
+    <a-entity id="rig">
+      <a-entity
+        id="player"
+        camera="near: 0.099;"
+        position="0 1.6 0"
+        look-controls
+        get-user-data
+      >
+      </a-entity>
+      <a-entity
+        laser-controls="hand : left;"
+        raycaster="objects: .clickable; far: 25"
+      ></a-entity>
+      <a-entity
+        laser-controls="hand : right;"
+        raycaster="objects: .clickable; far: 25"
+      ></a-entity>
+    </a-entity>
 
     <a-sky rotation="0 -90 0" src="#panaroma-video"></a-sky>
   </a-scene>
 
-  <section
-    style="
-      display: flex;
-      width: 500px;
-      height: 300px;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: #2a2a2e;
-      text-align: center;
-      color: #d6d6d6;
-      border-radius: 1em;
-      padding: 1em;
-      margin: 0;
-      accent-color: hotpink;
-    "
-    id="my-interface"
-  >
+  <section id="my-interface">
     <h2>Do You Know What</h2>
     <p>I dont know what to write here</p>
     <p>Will not do Lorem Ispum as it is not meaningfull</p>
     <p>This video player demo is for Arturo for POC</p>
-
-
-
 
     <div
       id="learn-btn"
@@ -124,35 +143,65 @@ id="rig"
         padding: 10px 15px;
         border: #d6d6d6 solid;
         border-radius: 6px;
-      ">
+      "
+    >
       Learn More
     </div>
   </section>
 
+  <section id="range-interface">
+    <div id="vid-seconds" style="color: #d6d6d6">00:00/00:20</div>
+  </section>
 
-<section
-style="
+  <section id="position-data">
+    <!-- Your Position  -->
 
-display: flex;
-width: 200px;
-height: 60px;
-justify-content: flex-end;
-align-items: center;
+    <div>
+      <h1 style="color: #d6d6d6">Your Position</h1>
+      <div
+        style="
+          display: flex;
+          gap: 6px;
+          justify-content: space-around;
+          flex-direction: column;
+        "
+      >
+        <div
+          id="posX"
+          style="
+            color: #d6d6d6;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+              'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 20px;
+          "
+        >
+          X : 0
+        </div>
+        <div
+          id="posY"
+          style="
+            color: #d6d6d6;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+              'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 20px;
+          "
+        >
+          Y : 0
+        </div>
+        <div
+          id="posZ"
+          style="
+            color: #d6d6d6;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+              'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 20px;
+          "
+        >
+          Z : 0
+        </div>
+      </div>
+    </div>
+  </section>
 
-flex-direction: column;
-background: #262626;
-text-align: center;
-
-border-radius: 1em;
-
-margin: 0;
-accent-color: hotpink;
-"
-id="range-interface">
-
-  <div id="vid-seconds" style="color: #d6d6d6;">00:00/00:20</div>
-</section>
-
-
-
+  <script src="./script.js"></script>
 </body>
