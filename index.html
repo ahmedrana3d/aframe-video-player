@@ -5,6 +5,7 @@
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="./scripts/aframe-html.min.js"></script>
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
   <script src="./scripts/hover-effect.component.js"></script>
   <script src="./scripts/play-pause.component.js"></script>
 </head>
@@ -21,6 +22,10 @@
         src="./assets/videopanaroma.mp4"
         playsinline
       ></video>
+
+
+      <video   playsinline loop muted id="on-kitchen" src="./assets/VR_Outside.mp4"></video>
+
 
       <!-- Video Controls Icons  -->
 
@@ -67,6 +72,7 @@
       scale="0.4 0.4 0.4"
     >
       <a-image
+      id="play-btn"
         hover-effect=""
         class="clickable"
         src="#play"
@@ -76,20 +82,22 @@
         geometry=""
         opacity="1"
       ></a-image>
+      <!-- forward="#panaroma-video" -->
       <a-image
+      id="forward-btn"
         hover-effect=""
         class="clickable"
-        forward="#panaroma-video"
         src="#forward"
         position="2.52779 -0.01045 0.03527"
         material=""
         geometry=""
         opacity="1"
       ></a-image>
+      <!-- backward="#panaroma-video" -->
       <a-image
+      id="backward-btn"
         hover-effect=""
         class="clickable"
-        backward="#panaroma-video"
         src="#backward"
         position="-2.41451 0.02823 0.15399"
         material=""
@@ -110,6 +118,7 @@
 
     <a-entity id="rig">
       <a-entity
+      wasd-controls
         id="player"
         camera="near: 0.099;"
         position="0 1.6 0"
@@ -127,7 +136,7 @@
       ></a-entity>
     </a-entity>
 
-    <a-sky rotation="0 -200 0" src="#panaroma-video"></a-sky>
+    <a-sky id="video-sphere" rotation="0 -200 0" src="#panaroma-video"></a-sky>
   </a-scene>
 
   <section id="my-interface">
@@ -246,5 +255,5 @@
     </div>
   </section>
 
-  <script src="./script.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>

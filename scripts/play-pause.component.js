@@ -1,3 +1,4 @@
+
 AFRAME.registerComponent("play-pause", {
   schema: {
     type: "selector",
@@ -7,6 +8,9 @@ AFRAME.registerComponent("play-pause", {
     const el = this.el;
     const popUp = document.querySelector("#pop-up");
     const learnBtn = document.querySelector("#learn-btn");
+    const forwardBtn = document.querySelector("#forward-btn");
+    const backwardBtn = document.querySelector("#backward-btn");
+    
 
     var messageLogged = false;
 
@@ -27,6 +31,16 @@ AFRAME.registerComponent("play-pause", {
 
         messageLogged = true;
       }
+    });
+
+    // Forward And Backward Logic
+
+    forwardBtn.addEventListener("click", function () {
+      video.currentTime += 5;
+    });
+
+    backwardBtn.addEventListener("click", function () {
+      video.currentTime -= 5;
     });
 
     learnBtn.addEventListener("click", () => {
@@ -70,32 +84,6 @@ AFRAME.registerComponent("play-pause", {
         video.pause();
         el.setAttribute("src", "#play");
       }
-    });
-  },
-});
-
-AFRAME.registerComponent("forward", {
-  schema: {
-    type: "selector",
-  },
-  init: function () {
-    var video = this.data;
-    const el = this.el;
-    this.el.addEventListener("click", function () {
-      video.currentTime += 5;
-    });
-  },
-});
-
-AFRAME.registerComponent("backward", {
-  schema: {
-    type: "selector",
-  },
-  init: function () {
-    var video = this.data;
-    const el = this.el;
-    this.el.addEventListener("click", function () {
-      video.currentTime -= 5;
     });
   },
 });
