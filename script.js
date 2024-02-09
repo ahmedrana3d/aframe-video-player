@@ -92,3 +92,35 @@ if (this.KitchenVideo == true) {
     this.rZ_EL.innerText = `rZ : ${this.el.object3D.rotation.z.toFixed(3)}`;
   },
 });
+
+
+
+AFRAME.registerComponent("add-hand-event" , {
+  init : function () {
+    const el = this.el;
+    const handEvent = document.querySelector("#hand-event");
+    const cursor = document.querySelector("[a-cursor]");
+    const mouseFuse = document.getElementById("mouse-condition")
+
+
+    el.addEventListener("pinchended" , ()=>{
+      handEvent.innerHTML = "Pinch Ended";
+      cursor.setAttribute("fuse" , "true");
+      cursor.setAttribute("raycaster" , "objects: .clickable");
+      cursor.setAttribute("fuseTimeout" , "200");
+
+      mouseFuse.innerHTML = "Mouse Fuse : On";
+
+    })
+    el.addEventListener("pinchstarted" , ()=>{
+      handEvent.innerHTML = "Pinch Started";
+      cursor.setAttribute("fuse" , "false");
+      cursor.setAttribute("raycaster" , "objects: .clickable");
+      cursor.setAttribute("fuseTimeout" , "200");
+      mouseFuse.innerHTML = "Mouse Fuse : Off";
+      
+    })
+    
+
+  }
+})

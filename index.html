@@ -8,6 +8,7 @@
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
   <script src="./scripts/hover-effect.component.js"></script>
   <script src="./scripts/play-pause.component.js"></script>
+  <script src="./scripts/hotspot-click.component.js"></script>
 </head>
 
 <body>
@@ -42,14 +43,39 @@
       material="shader:flat"
       visible="false"
     ></a-sphere>
-    <a-entity
-      id="pop-up"
-      class="clickable"
-      scale="0 0 0"
-      visible="false"
-      html="html:#my-interface;cursor:#cursor;"
-      position="0 1.5 -5.913"
-    ></a-entity>
+<a-entity id="pop-up" class="clickable" scale="0 0 0" visible="false" html="html: #my-interface; cursor: #cursor" position="0 1.63572 -6.98441"></a-entity>
+
+<!-- Hand Controls Data  -->
+
+
+<a-entity  class="clickable" scale="10 10 10"     look-at="[camera]" visible="true" html="html: #my-hand-controls; cursor: #cursor" position="0 1.63572 -6.98441"></a-entity>
+
+
+
+
+<!-- HOTSPOTS ////////////////////////////// -->
+
+
+
+<a-entity hover-effect-hotspot="0.6 0.6 0.6" hotspot-click="videoSrc : ./assets/VR_Outside.mp4" class="clickable" look-at="[camera]" geometry="primitive: circle" position="-0.78005 0 -8.41339" scale="0.5 0.5 1" material="opacity: 0.6; color: #ffffff">
+  <a-text text="width: 12.65; align: center; color: #000000; value: Kitchen"></a-text>
+</a-entity>
+
+
+
+<a-entity hover-effect-hotspot="0.6 0.6 0.6" hotspot-click="videoSrc : ./assets/windowvideo.mp4" class="clickable" look-at="[camera]" geometry="primitive: circle" position="4.81101 1.78905 4.6833" scale="0.5 0.5 1" material="opacity: 0.6; color: #ffffff" rotation="1.6128607907140105 -134.22934865894183 0">
+  <a-text text="width: 12.65; align: center; color: #000000; value: Outside"></a-text>
+</a-entity>
+
+
+<a-entity hover-effect-hotspot="0.6 0.6 0.6" hotspot-click="videoSrc: ./assets/videopanaroma.mp4" class="clickable" look-at="[camera]" geometry="primitive: circle" position="-2.68124 -0.68493 1.88218" scale="0.5 0.5 1" material="opacity: 0.6; color: #ffffff" rotation="10.108 -130.11500000000004 0">
+  <a-text  text="width: 1.99; align: center; color: #000000; value: Living Room; letterSpacing: 1; wrapCount: 7"></a-text>
+</a-entity>
+
+
+
+
+
 
     <!-- User Position Data  -->
     <a-entity
@@ -73,7 +99,7 @@
     >
       <a-image
       id="play-btn"
-        hover-effect=""
+        hover-effect="0.5"
         class="clickable"
         src="#play"
         play-pause="#panaroma-video"
@@ -85,7 +111,7 @@
       <!-- forward="#panaroma-video" -->
       <a-image
       id="forward-btn"
-        hover-effect=""
+        hover-effect="0.5"
         class="clickable"
         src="#forward"
         position="2.52779 -0.01045 0.03527"
@@ -96,7 +122,7 @@
       <!-- backward="#panaroma-video" -->
       <a-image
       id="backward-btn"
-        hover-effect=""
+        hover-effect="0.5"
         class="clickable"
         src="#backward"
         position="-2.41451 0.02823 0.15399"
@@ -125,6 +151,7 @@
         look-controls
         get-user-data
       >
+      <a-cursor></a-cursor>
       </a-entity>
       <a-entity
         laser-controls="hand : left;"
@@ -134,6 +161,16 @@
         laser-controls="hand : right;"
         raycaster="objects: .clickable; far: 25"
       ></a-entity>
+
+      <!-- Hand Tracking Controls  -->
+
+      <a-entity id="leftHand" hand-tracking-controls="hand: left;" add-hand-event>
+    
+      </a-entity>
+<a-entity id="rightHand" hand-tracking-controls="hand: right;" add-hand-event>
+
+</a-entity>
+
     </a-entity>
 
     <a-sky id="video-sphere" rotation="0 -200 0" src="#panaroma-video"></a-sky>
@@ -161,6 +198,29 @@
   <section id="range-interface">
     <div id="vid-seconds" style="color: #d6d6d6">00:00/00:20</div>
   </section>
+
+
+
+<!-- HAND TRACKING DATA  -->
+
+
+<section id="my-hand-controls">
+
+<h1 >Hand Tracking Data</h1>
+
+<h2 id="hand-event">You Pinched</h2>
+
+<h3 id="mouse-condition">Fuse True</h3>
+
+</section>
+
+
+
+
+
+
+
+
 
   <section id="position-data">
     <!-- Your Position  -->
