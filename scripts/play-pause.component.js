@@ -15,23 +15,23 @@ AFRAME.registerComponent("play-pause", {
     var messageLogged = false;
 
     // Add an event listener to the 'timeupdate' event
-    video.addEventListener("timeupdate", function () {
-      if (video.currentTime <= 10 && messageLogged) {
-        messageLogged = false;
-        popUp.setAttribute("visible", "false");
-        popUp.setAttribute("scale", "0 0 0");
-      }
+    // video.addEventListener("timeupdate", function () {
+    //   if (video.currentTime <= 10 && messageLogged) {
+    //     messageLogged = false;
+    //     popUp.setAttribute("visible", "false");
+    //     popUp.setAttribute("scale", "0 0 0");
+    //   }
 
-      if (video.currentTime >= 10 && !messageLogged) {
-        popUp.setAttribute("visible", "true");
-        popUp.setAttribute("scale", "10 10 10");
+    //   if (video.currentTime >= 10 && !messageLogged) {
+    //     popUp.setAttribute("visible", "true");
+    //     popUp.setAttribute("scale", "10 10 10");
 
-        video.pause();
-        el.setAttribute("src", "#play");
+    //     video.pause();
+    //     el.setAttribute("src", "#play");
 
-        messageLogged = true;
-      }
-    });
+    //     messageLogged = true;
+    //   }
+    // });
 
     // Forward And Backward Logic
 
